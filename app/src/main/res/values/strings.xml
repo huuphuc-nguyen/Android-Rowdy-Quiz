@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Rowdy Quiz</string>
+    <string name="design_txt">lorem ipsum</string>
+    <string name="btn_true">True</string>
+    <string name="btn_false">False</string>
+    <string name="btn_next">Next</string>
+</resources>
