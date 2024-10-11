@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Set the background color of the button -->
-    <solid android:color="@color/UTSA_Orange" />
+    <!-- State when the button is pressed -->
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/UTSA_Dark_Orange" />
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@android:color/white" />
+        </shape>
+    </item>
 
-    <!-- Set the radius for rounded corners -->
-    <corners android:radius="16dp" />
+    <!-- Default state when the button is not pressed -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/UTSA_Orange" />
+            <corners android:radius="16dp" />
+            <stroke
+                android:width="2dp"
+                android:color="@android:color/white" />
+        </shape>
+    </item>
 
-    <!-- Optional: Add a stroke (border) to the button -->
-    <stroke
-        android:width="2dp"
-        android:color="@android:color/white" />
-</shape>
+</selector>

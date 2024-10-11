@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void createQuizBank(){
         quizbank = new QuizBank();
-        quizbank.loadQuestion();
+        quizbank.loadQuestion(this);
     }
 
     private void displayQuestion(){

@@ -1,6 +1,13 @@
 package edu.utsa.cs3443.rowdyquiz.model;
 
+import android.content.res.AssetManager;
+
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import edu.utsa.cs3443.rowdyquiz.MainActivity;
 
 public class QuizBank {
     private ArrayList<Question> questions;
@@ -44,10 +51,29 @@ public class QuizBank {
     public void addQuestion(Question question){
         questions.add(question);
     }
-    public void loadQuestion(){
-        addQuestion(new Question("Today is Monday", true));
-        addQuestion(new Question("This app is RowdyQuiz", true));
-        addQuestion(new Question("The color of app name is black", false));
-        addQuestion(new Question("This app is built with HTML", false));
+    public void loadQuestion(MainActivity activity){
+        AssetManager manager = activity.getAssets();
+        Scanner scanner = null;
+        String  filename = "questions.csv";
+        try{
+            InputStream file = manager.open(filename);
+            scanner = new Scanner(file);
+
+            while (scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String[] tokens = line.split(",");
+
+                Question newQuestion = new Question(tokens[0].trim(),tokens[1].trim().equals("true"));
+                addQuestion(newQuestion);
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+        finally {
+            if (scanner!=null){
+                scanner.close();
+            }
+        }
     }
 }
