@@ -6,4 +6,7 @@
     <string name="btn_next">Next</string>
     <string name="btn_peek">Peek</string>
     <string name="btn_show_answer">Show Answer</string>
+    <string name="confirm_msg">Are you sure you want to do this ?</string>
+    <string name="the_answer">The answer is:</string>
+    <string name="btn_back">Back</string>
 </resources>

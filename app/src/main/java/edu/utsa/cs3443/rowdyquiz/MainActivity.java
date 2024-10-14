@@ -105,4 +105,8 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(intentKey, String.valueOf(getAnswer()));
         startActivity(intent);
     }
+
+    public static String decodeIntent(){
+        return intentKey;
+    }
 }

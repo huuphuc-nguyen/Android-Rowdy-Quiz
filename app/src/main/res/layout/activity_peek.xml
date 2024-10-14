@@ -25,7 +25,7 @@
             android:id="@+id/txt_question"
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:text="@string/design_txt"
+            android:text="@string/confirm_msg"
             android:textColor="@color/white"
             android:gravity="center"
             android:padding="30dp"
@@ -34,7 +34,7 @@
             android:id="@+id/txt_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/design_txt"
+            android:text="@string/the_answer"
             android:textColor="@color/white"
             android:gravity="center"
             android:padding="24dp"
@@ -51,6 +51,19 @@
             android:background="@drawable/rounded_button"
             android:padding="24dp"
             android:text="@string/btn_show_answer"
+            android:stateListAnimator="@animator/button_scale"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:padding="24dp"
+            android:text="@string/btn_back"
+            android:layout_marginTop="20dp"
             android:stateListAnimator="@animator/button_scale"/>
 
     </LinearLayout>
