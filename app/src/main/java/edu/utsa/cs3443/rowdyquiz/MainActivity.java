@@ -1,5 +1,6 @@
 package edu.utsa.cs3443.rowdyquiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,15 +9,13 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import edu.utsa.cs3443.rowdyquiz.model.*;
 
 public class MainActivity extends AppCompatActivity {
     private QuizBank quizbank;
     private Toast currentToast;
+    private static final String intentKey = "answer";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Button btn_next = findViewById(R.id.btn_next);
         Button btn_true = findViewById(R.id.btn_true);
         Button btn_false = findViewById(R.id.btn_false);
+        Button btn_peek = findViewById(R.id.btn_peek);
 
         btn_true.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +72,13 @@ public class MainActivity extends AppCompatActivity {
                 displayQuestion();
             }
         });
+
+        btn_peek.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchPeekActivity();
+            }
+        });
     }
 
     private void createQuizBank(){
@@ -91,5 +98,11 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean getAnswer(){
         return quizbank.getCurrentQuestionAnswer();
+    }
+
+    private void launchPeekActivity(){
+        Intent intent = new Intent(this, PeekActivity.class);
+        intent.putExtra(intentKey, String.valueOf(getAnswer()));
+        startActivity(intent);
     }
 }

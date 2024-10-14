@@ -85,9 +85,20 @@
             android:background="@drawable/rounded_button"
             android:padding="24dp"
             android:text="@string/btn_next"
-            android:layout_marginTop="20dp"
             android:stateListAnimator="@animator/button_scale"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:id="@+id/btn_peek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_button"
+            android:layout_marginTop="20dp"
+            android:padding="24dp"
+            android:text="@string/btn_peek"
+            android:stateListAnimator="@animator/button_scale"/>
 
     </LinearLayout>
 
