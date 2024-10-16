@@ -1,7 +1,9 @@
 package edu.utsa.cs3443.rowdyquiz;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         createQuizBank();
+
         displayQuestion();
 
         Button btn_next = findViewById(R.id.btn_next);
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
     private void createQuizBank(){
         quizbank = new QuizBank();
         quizbank.loadQuestion(this);
+        Log.e("Create","Load Data");
     }
 
     private void displayQuestion(){
@@ -109,4 +113,23 @@ public class MainActivity extends AppCompatActivity {
     public static String decodeIntent(){
         return intentKey;
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        int currentIndex =  prefs.getInt("CURRENT_INDEX",0);
+        quizbank.setqIndex(currentIndex);
+        displayQuestion();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("CURRENT_INDEX", quizbank.getqIndex());
+        editor.apply();
+    }
+
 }
