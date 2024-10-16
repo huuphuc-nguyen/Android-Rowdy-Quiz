@@ -28,10 +28,13 @@ public class QuizBank {
         this.qIndex = index;
     }
 
+    public void goToNextQuestion(){
+        this.qIndex ++;
+    }
+
     public Question getCurrentQuestion(){
         if (getqIndex() >= 0 && getqIndex() < questions.size() ){
             currentQuestion = questions.get(getqIndex());
-            setqIndex(getqIndex() + 1);
         } else{
             setqIndex(0);
             currentQuestion = questions.get(getqIndex());

@@ -43,8 +43,7 @@ public class PeekActivity extends AppCompatActivity {
     }
 
     private void backToMain(){
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
 }

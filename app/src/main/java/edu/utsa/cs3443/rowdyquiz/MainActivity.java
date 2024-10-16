@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                displayQuestion();
+                displayNextQuestion();
             }
         });
 
@@ -96,6 +96,11 @@ public class MainActivity extends AppCompatActivity {
         questionText.setText(getQuestion());
     }
 
+    private void displayNextQuestion(){
+        quizbank.goToNextQuestion();
+        displayQuestion();
+    }
+
     private String getQuestion(){
         return quizbank.getCurrentQuestionText();
     }
@@ -112,24 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static String decodeIntent(){
         return intentKey;
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        int currentIndex =  prefs.getInt("CURRENT_INDEX",0);
-        quizbank.setqIndex(currentIndex);
-        displayQuestion();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        SharedPreferences prefs = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("CURRENT_INDEX", quizbank.getqIndex());
-        editor.apply();
     }
 
 }
